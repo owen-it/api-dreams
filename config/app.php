@@ -151,6 +151,12 @@ return [
         LucaDegasperi\OAuth2Server\Storage\FluentStorageServiceProvider::class,
         LucaDegasperi\OAuth2Server\OAuth2ServerServiceProvider::class,
 
+        /*
+         * The laravel-cors package allows you to send Cross-Origin Resource Sharing
+         * headers with ACL-style per-url configuration.
+         */
+        Barryvdh\Cors\ServiceProvider::class,
+
     ],
 
     /*
@@ -204,6 +210,7 @@ return [
          * OAuth2 service
          */
         'Authorizer' => LucaDegasperi\OAuth2Server\Facades\Authorizer::class,
+
 
     ],
 
