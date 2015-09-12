@@ -38,8 +38,12 @@
     <body>
         <div class="container">
             <div class="content">
-                <img src="images/logo.png" alt="">
-                <div class="title">Dreams</div>
+                <a class="header-logo-invertocat" href="https://github.com/owen-it/api-dreams" >
+                    <img src="images/logo.png" alt="">
+                </a>
+                <div class="title">
+                    Dreams
+                </div>
             </div>
         </div>
     </body>
