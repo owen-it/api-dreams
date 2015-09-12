@@ -209,7 +209,7 @@ return [
         /*
          * OAuth2 service
          */
-        'Authorizer' => LucaDegasperi\OAuth2Server\Facades\Authorizer::class,
+        'Authorizer' => \LucaDegasperi\OAuth2Server\Facades\Authorizer::class,
 
 
     ],

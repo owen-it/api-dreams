@@ -15,3 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::group(['prefix' => 'api', 'middleware' => ['oauth', 'cors']], function()
+{
+    Route::resource('dream', 'DreamController');
+});
