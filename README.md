@@ -1,6 +1,5 @@
-
 <p align="center">
-  <img src="http://owen.com.br/imagens_para_web/logo-dreams.png" width="300px" alt="api dreams" />
+  <img src="http://owen.com.br/imagens_para_web/logo-dreams.png" width="200px" alt="api dreams" />
 </p>
 
 ## Api-dreams [Laravel 5.1]
