@@ -15,9 +15,15 @@ use LucaDegasperi\OAuth2Server\Facades\Authorizer;
 
 Route::group(['prefix' => 'oauth', 'middleware' => 'cors'], function()
 {
+    /*
+     * Get access token
+     */
     Route::post('access_token', function() {
         return Response::json(Authorizer::issueAccessToken());
     });
+    /*
+     * Registe nre user
+     */
     Route::post('register', 'Auth\AuthController@register');
 });
 

@@ -38,7 +38,8 @@
     <body>
         <div class="container">
             <div class="content">
-                <div class="title">laravel-auditing</div>
+                <img src="images/logo.png" alt="">
+                <div class="title">Dreams</div>
             </div>
         </div>
     </body>
