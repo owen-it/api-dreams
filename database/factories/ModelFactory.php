@@ -11,11 +11,20 @@
 |
 */
 
-$factory->define(App\User::class, function (Faker\Generator $faker) {
+use Illuminate\Support\Facades\Hash;
+
+$factory->define(App\Entity\User::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->name,
         'email' => $faker->email,
-        'password' => bcrypt(str_random(10)),
+        'password' => Hash::make('123'),
         'remember_token' => str_random(10),
+        'admin' => rand(0,1)
+    ];
+});
+
+$factory->define(App\Entity\Dream::class, function (Faker\Generator $faker) {
+    return [
+        'content' => $faker->sentence
     ];
 });

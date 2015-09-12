@@ -64,4 +64,4 @@ class User extends Model implements AuthenticatableContract,
     {
         return md5(strtolower(trim($this->email ?: 'default')));
     }
-}   
+}
