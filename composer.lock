@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "45347ab5248116e2e0f55553426732af",
+    "hash": "4d30593dea018e46dc626e0b44dc22f2",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1106,6 +1106,51 @@
                 "php"
             ],
             "time": "2015-07-14 17:31:05"
+        },
+        {
+            "name": "owen-it/laravel-auditing",
+            "version": "2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/owen-it/laravel-auditing.git",
+                "reference": "14fb5a69b2ed650dcb15607dc01e45971e4fce5e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/owen-it/laravel-auditing/zipball/14fb5a69b2ed650dcb15607dc01e45971e4fce5e",
+                "reference": "14fb5a69b2ed650dcb15607dc01e45971e4fce5e",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5.0|~5.1",
+                "php": ">=5.3.0"
+            },
+            "type": "package",
+            "autoload": {
+                "psr-4": {
+                    "OwenIt\\Auditing\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Antério",
+                    "email": "anteriovieira@gmail.com"
+                }
+            ],
+            "description": "Keep a change history for your models using laravel version 5.1.",
+            "homepage": "https://github.com/owen-it/laravel-auditing",
+            "keywords": [
+                "auditing",
+                "laravel",
+                "log",
+                "observe",
+                "register"
+            ],
+            "time": "2015-09-12 00:19:20"
         },
         {
             "name": "psr/log",

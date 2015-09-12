@@ -11,15 +11,23 @@
 |
 */
 
-Route::post('oauth/access_token', function() {
-    return Response::json(Authorizer::issueAccessToken());
+use LucaDegasperi\OAuth2Server\Facades\Authorizer;
+
+Route::group(['prefix' => 'oauth', 'middleware' => 'cors'], function()
+{
+    Route::post('access_token', function() {
+        return Response::json(Authorizer::issueAccessToken());
+    });
+    Route::post('register', 'Auth\AuthController@register');
 });
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['prefix' => 'api', 'middleware' => ['oauth', 'cors']], function()
+Route::group(['prefix' => 'api', 'middleware' => ['cors', 'oauth']], function()
 {
     Route::resource('dream', 'DreamController',['only' => ['index', 'show', 'update', 'store', 'destroy']]);
+    Route::get('me/account', 'Auth\AuthController@me');
+    Route::get('members', 'Auth\AuthController@users');
 });

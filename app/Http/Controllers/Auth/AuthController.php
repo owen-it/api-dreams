@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Entity\User;
-use LucaDegasperi\OAuth2Server\Authorizer;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use LucaDegasperi\OAuth2Server\Facades\Authorizer;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -24,6 +26,13 @@ class AuthController extends Controller
 
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
 
+    public $rules = [
+        'name' => 'required|max:255',
+        'email' => 'required|email|max:255|unique:users',
+        'password' => 'required|confirmed|min:6',
+    ];
+
+
     /**
      * Create a new authentication controller instance.
      *
@@ -31,21 +40,6 @@ class AuthController extends Controller
     public function __construct()
     {
         $this->middleware('guest', ['except' => ['getLogout', 'getLog']]);
-    }
-
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|confirmed|min:6',
-        ]);
     }
 
     /**
@@ -57,6 +51,7 @@ class AuthController extends Controller
      */
     protected function register(Request $request)
     {
+        $this->validate($request, $this->rules);
         return User::create([
             'name' => $request->name,
             'email' => $request->email,
