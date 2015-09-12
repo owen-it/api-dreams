@@ -9,6 +9,8 @@
 namespace App\OAuth;
 
 
+use Illuminate\Support\Facades\Auth;
+
 class PasswordVerifier
 {
     /**
