@@ -62,5 +62,6 @@ class User extends Model implements AuthenticatableContract,
      */
     public function getGravatarAttribute()
     {
-        return md5( strtolower( trim( $this->email ?: 'default') ) );
+        return md5(strtolower(trim($this->email ?: 'default')));
     }
+}   
