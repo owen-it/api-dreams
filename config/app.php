@@ -157,6 +157,11 @@ return [
          */
         Barryvdh\Cors\ServiceProvider::class,
 
+        /*
+         * Laravel auditing - Keep historical records of changes in the bank
+         */
+        OwenIt\Auditing\AuditingServiceProvider::class,
+
     ],
 
     /*

@@ -21,7 +21,7 @@ class Kernel extends HttpKernel
         /*
          * OAuth2 service
          */
-        \LucaDegasperi\OAuth2Server\Middleware\OAuthExceptionHandlerMiddleware::class
+        \LucaDegasperi\OAuth2Server\Middleware\OAuthExceptionHandlerMiddleware::class,
     ];
 
     /**
