@@ -83,7 +83,7 @@ class DreamRepository
      */
     public function getById($id)
     {
-        return Dream::findOrFail($id);
+        return Dream::with('user')->find($id);
     }
 
     /**

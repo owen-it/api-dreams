@@ -2,32 +2,50 @@
 
 namespace App\Http\Controllers;
 
+use App\Repositories\DreamRepository;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use LucaDegasperi\OAuth2Server\Authorizer;
+use LucaDegasperi\OAuth2Server\Facades\Authorizer;
 
 class DreamController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Repository instance.
      *
-     * @return Response
      */
-    public function index()
+    protected $dreamRepository;
+
+    /**
+     * Validation rules.
+     *
+     */
+    protected $rules = [
+        'content' => 'required|max:2000',
+    ];
+
+    /**
+     * Create a new DreamController controller instance.
+     *
+     * @param DreamRepository|\App\Repositories\DreamRepository $dreamRepository
+     */
+    public function __construct(DreamRepository $dreamRepository)
     {
-        return \App\Entity\Dream::all();
+        $this->dreamRepository = $dreamRepository;
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Display a listing of the resource.
      *
+     * @param Request $request
      * @return Response
      */
-    public function create()
+    public function index(Request $request)
     {
-        //
+        $search = $request->get('search', null);
+        return $this->dreamRepository->getDreamsWithUserPaginate(5, $search);
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -37,7 +55,9 @@ class DreamController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, $this->rules);
+        $this->dreamRepository->store($request->all(), Authorizer::getResourceOwnerId());
+        return $this->dreamRepository->getDreamsWithUserPaginate(5);
     }
 
     /**
@@ -48,18 +68,7 @@ class DreamController extends Controller
      */
     public function show($id)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function edit($id)
-    {
-        //
+        return ['data' => $this->dreamRepository->getById($id)];
     }
 
     /**
@@ -71,7 +80,11 @@ class DreamController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, $this->rules);
+        if ($this->dreamRepository->update($request->all(), $id))
+        {
+            return ['result' => 'success'];
+        }
     }
 
     /**
@@ -82,6 +95,11 @@ class DreamController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if ($this->dreamRepository->destroy($id))
+        {
+            return ['result' => 'success'];
+        }
+
+        return ['result' => 'error', 'status' => false, 'Message' => 'Is not owner of dream!'];
     }
 }

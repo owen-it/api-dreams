@@ -21,5 +21,5 @@ Route::get('/', function () {
 
 Route::group(['prefix' => 'api', 'middleware' => ['oauth', 'cors']], function()
 {
-    Route::resource('dream', 'DreamController');
+    Route::resource('dream', 'DreamController',['only' => ['index', 'show', 'update', 'store', 'destroy']]);
 });
