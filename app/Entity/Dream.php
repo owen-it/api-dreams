@@ -7,6 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class Dream extends Model
 {
     /**
+     * The database table used by the model.
+     *
+     * @var string
+     */
+    protected $table = 'dreams';
+
+    /**
      * Added attribute
      *
      * @var array
@@ -23,6 +30,7 @@ class Dream extends Model
     /**
      * The belongsTo relation.
      *
+     * @return mixed
      */
     public function user()
     {
@@ -30,8 +38,10 @@ class Dream extends Model
     }
 
     /**
+     * Get owner
      * is_owner mutator.
      *
+     * @return mixed
      */
     public function getIsOwnerAttribute()
     {
@@ -39,6 +49,8 @@ class Dream extends Model
     }
 
     /**
+     * Get Elapsed time
+     * 
      * @return mixed
      */
     public function getElapsedTimeAttribute()
