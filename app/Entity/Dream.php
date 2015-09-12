@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Illuminate\Database\Eloquent\Model;
+use LucaDegasperi\OAuth2Server\Facades\Authorizer;
 
 class Dream extends Model
 {

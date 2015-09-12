@@ -16,7 +16,7 @@ class DreamController extends Controller
      */
     public function index()
     {
-        return Authorizer::getResourceOwnerId();
+        return \App\Entity\Dream::all();
     }
 
     /**
