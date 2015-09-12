@@ -50,7 +50,7 @@ class Dream extends Model
 
     /**
      * Get Elapsed time
-     * 
+     *
      * @return mixed
      */
     public function getElapsedTimeAttribute()
