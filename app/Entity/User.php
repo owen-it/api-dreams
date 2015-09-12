@@ -24,6 +24,13 @@ class User extends Model implements AuthenticatableContract,
     protected $table = 'users';
 
     /**
+     * Added attribute
+     *
+     * @var array
+     */
+    protected $appends = ['gravatar'];
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array
@@ -36,4 +43,24 @@ class User extends Model implements AuthenticatableContract,
      * @var array
      */
     protected $hidden = ['password', 'remember_token'];
-}
+
+
+    /**
+     * Dreams of user
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function dreams()
+    {
+        return $this->hasMany(Dream::class);
+    }
+
+    /**
+     * HASH image gravatar
+     *
+     * @return string
+     */
+    public function getGravatarAttribute()
+    {
+        return md5( strtolower( trim( $this->email ?: 'default') ) );
+    }
