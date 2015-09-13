@@ -1,7 +1,2 @@
-<<<<<<< HEAD
-https://github.com/heroku/heroku-buildpack-php
-https://github.com/heroku/heroku-buildpack-nodejs
-=======
 https://github.com/heroku/heroku-buildpack-php.git
 https://github.com/heroku/heroku-buildpack-nodejs.git
->>>>>>> 8440da84aebe1d97c4bd0cb6915e59f55b301103
