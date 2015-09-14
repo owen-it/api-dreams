@@ -4,8 +4,9 @@ namespace App\Entity;
 
 use Illuminate\Database\Eloquent\Model;
 use LucaDegasperi\OAuth2Server\Facades\Authorizer;
+use OwenIt\Auditing\Auditing;
 
-class Dream extends Model
+class Dream extends Auditing
 {
     /**
      * The database table used by the model.
@@ -27,6 +28,22 @@ class Dream extends Model
      * @var array
      */
     protected $hidden = ['updated_at', 'user_id'];
+    
+    /**
+     * Custom message
+     * 
+     * @var string
+     */
+    public static $customMessage = 'Dream {type} by ';
+
+    /**
+     * Custom fields
+     * 
+     * @var array
+     */
+    public static $customFields = [
+        'content' => ' is now dreaming of "{new}".'
+    ];
 
     /**
      * The belongsTo relation.
