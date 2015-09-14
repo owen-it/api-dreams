@@ -29,7 +29,7 @@ class User extends Auditing implements AuthenticatableContract,
      *
      * @var array
      */
-    protected $appends = ['gravatar'];
+    protected $appends = ['gravatar', 'elapsed_time'];
 
     /**
      * The attributes that are mass assignable.
@@ -64,5 +64,15 @@ class User extends Auditing implements AuthenticatableContract,
     public function getGravatarAttribute()
     {
         return md5(strtolower(trim($this->email ?: 'default')));
+    }
+    
+    /**
+     * Elapsed time
+     * 
+     * @return mixed
+     */
+    public function getElapsedTimeAttribute()
+    {
+        return $this->created_at->diffForHumans();
     }
 }
