@@ -44,7 +44,19 @@ class User extends Auditing implements AuthenticatableContract,
      * @var array
      */
     protected $hidden = ['password', 'remember_token'];
-
+    
+    /**
+     * @var string
+     */
+    public static $logCustomMessage = 'User {new.name|empty} {type} ';
+    
+    /**
+     * @var array
+     */
+    public static $logCustomFields = [
+        'name'  => 'The name was defined as {new.name}',
+        'email'  => 'The email was defined as {new.email}',
+    ];
 
     /**
      * Dreams of user
