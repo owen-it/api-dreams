@@ -10,7 +10,7 @@
         "lucadegasperi/oauth2-server-laravel": "^5.0",
         "barryvdh/laravel-cors": "^0.7.1",
         "fzaninotto/faker": "^1.5",
-        "owen-it/laravel-auditing": "^2.0"
+        "owen-it/laravel-auditing": "2.1.*"
     },
     "require-dev": {
         "mockery/mockery": "0.9.*",
