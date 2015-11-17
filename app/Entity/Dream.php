@@ -30,19 +30,19 @@ class Dream extends Auditing
     protected $hidden = ['updated_at', 'user_id'];
     
     /**
-     * Custom message
-     * 
-     * @var string
+     * Log custom message
      */
-    public static $customMessage = 'Dream {type} by ';
+    public static $logCustomMessage = '{user.name|Anonymous} {type} a dream {elapsed_time}';
 
     /**
-     * Custom fields
-     * 
-     * @var array
+     * Log custom fields message
      */
-    public static $customFields = [
-        'content' => ' is now dreaming of "{new}".'
+    public static $logCustomFields = [
+        'content'  => ' Is now dreaming of "{new_value.content|old_value.content}"',
+        'user_id' => [
+            'updated' => '{||ownerName} owns the dream',
+            'created' => '{owner.user.name} was defined as owner'
+        ],
     ];
 
     /**
@@ -74,6 +74,15 @@ class Dream extends Auditing
     public function getElapsedTimeAttribute()
     {
         return $this->created_at->diffForHumans();
+    }
+    
+    /**
+     * @param $log
+     * @return string
+     */
+    public function ownerName($log)
+    {
+        return $log->owner->user->name;
     }
 
 }
